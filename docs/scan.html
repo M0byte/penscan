@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module scan</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>scan</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/andy/git/penscan/scan.py">/home/andy/git/penscan/scan.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="binascii.html">binascii</a><br>
+</td><td width="25%" valign=top><a href="select.html">select</a><br>
+</td><td width="25%" valign=top><a href="socket.html">socket</a><br>
+</td><td width="25%" valign=top><a href="threading.html">threading</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="scan.html#Scan">Scan</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Scan">class <strong>Scan</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Scan">Scan</a>(ports,&nbsp;ip)<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;provides&nbsp;the&nbsp;methods&nbsp;to&nbsp;scan&nbsp;the&nbsp;target.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Scan-__init__"><strong>__init__</strong></a>(self, ports, ip)</dt><dd><tt>Initializes&nbsp;<a href="#Scan">Scan</a>-Class&nbsp;with&nbsp;Port-Range&nbsp;and&nbsp;IP-Address.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ports&nbsp;(str)&nbsp;:&nbsp;Port&nbsp;or&nbsp;Port-Range&nbsp;to&nbsp;scan<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ip&nbsp;(str)&nbsp;:&nbsp;IP-Address&nbsp;to&nbsp;scan</tt></dd></dl>
+
+<dl><dt><a name="Scan-check_if_open"><strong>check_if_open</strong></a>(self, response)</dt><dd><tt>Checks&nbsp;if&nbsp;the&nbsp;port&nbsp;is&nbsp;open.<br>
+By&nbsp;reading&nbsp;the&nbsp;flags&nbsp;on&nbsp;the&nbsp;correct&nbsp;position&nbsp;and&nbsp;also&nbsp;reading&nbsp;out&nbsp;the&nbsp;port_number.<br>
+If&nbsp;the&nbsp;port&nbsp;is&nbsp;open,&nbsp;it&nbsp;will&nbsp;be&nbsp;written&nbsp;in&nbsp;the&nbsp;output&nbsp;array.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;response&nbsp;(str)&nbsp;:&nbsp;The&nbsp;response&nbsp;from&nbsp;the&nbsp;receiving&nbsp;socket</tt></dd></dl>
+
+<dl><dt><a name="Scan-connect_syn"><strong>connect_syn</strong></a>(self, port_number)</dt><dd><tt>Creation&nbsp;of&nbsp;the&nbsp;socket&nbsp;and&nbsp;reception&nbsp;of&nbsp;the&nbsp;raw&nbsp;packet.<br>
+The&nbsp;socket&nbsp;get&nbsp;created&nbsp;and&nbsp;binded&nbsp;locally.&nbsp;With&nbsp;the&nbsp;multiplexing&nbsp;I/O&nbsp;module&nbsp;"select"&nbsp;the<br>
+socket&nbsp;gets&nbsp;into&nbsp;receiving&nbsp;mode&nbsp;for&nbsp;our&nbsp;response&nbsp;(SYN&nbsp;ACK).<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;port_number&nbsp;(int)&nbsp;:&nbsp;Number&nbsp;of&nbsp;the&nbsp;port&nbsp;to&nbsp;scan</tt></dd></dl>
+
+<dl><dt><a name="Scan-connect_tcp"><strong>connect_tcp</strong></a>(self, port_number)</dt><dd><tt>Performs&nbsp;the&nbsp;actual&nbsp;TCP-<a href="#Scan">Scan</a>.<br>
+Limit&nbsp;the&nbsp;access&nbsp;of&nbsp;the&nbsp;resource&nbsp;by&nbsp;mutexing&nbsp;the&nbsp;output&nbsp;array&nbsp;with&nbsp;the&nbsp;threadLimiter.<br>
+The&nbsp;socket&nbsp;gets&nbsp;created&nbsp;and&nbsp;binded.&nbsp;The&nbsp;open&nbsp;ports&nbsp;will&nbsp;be&nbsp;written&nbsp;into&nbsp;the&nbsp;output&nbsp;array<br>
+for&nbsp;return&nbsp;into&nbsp;main&nbsp;function.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;port_number&nbsp;(int)&nbsp;:&nbsp;The&nbsp;Port&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Scan-scan_syn"><strong>scan_syn</strong></a>(self)</dt><dd><tt>Starts&nbsp;the&nbsp;SYN&nbsp;Raw-<a href="#Scan">Scan</a>.<br>
+Because&nbsp;of&nbsp;the&nbsp;not&nbsp;thread&nbsp;safe&nbsp;raw&nbsp;socket&nbsp;library&nbsp;the&nbsp;scans&nbsp;get<br>
+started&nbsp;synchronously.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;output:&nbsp;Array&nbsp;of&nbsp;opened&nbsp;ports</tt></dd></dl>
+
+<dl><dt><a name="Scan-scan_tcp"><strong>scan_tcp</strong></a>(self)</dt><dd><tt>Starts&nbsp;the&nbsp;multi-threaded&nbsp;TCP-<a href="#Scan">Scan</a>.<br>
+For&nbsp;every&nbsp;thread&nbsp;a&nbsp;port&nbsp;number&nbsp;is&nbsp;passed&nbsp;and&nbsp;the&nbsp;thread&nbsp;get&nbsp;started.<br>
+If&nbsp;there&nbsp;are&nbsp;too&nbsp;many&nbsp;threads&nbsp;started&nbsp;asynchronously,<br>
+they&nbsp;will&nbsp;be&nbsp;enqueued&nbsp;and&nbsp;completed&nbsp;one&nbsp;by&nbsp;one.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;output:&nbsp;Array&nbsp;of&nbsp;opened&nbsp;ports</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>SUCCESS</strong> = 0</dl>
+
+<dl><dt><strong>output</strong> = {}</dl>
+
+<dl><dt><strong>portList</strong> = []</dl>
+
+<dl><dt><strong>threadLimiter</strong> = &lt;threading.BoundedSemaphore object&gt;</dl>
+
+<dl><dt><strong>threads</strong> = []</dl>
+
+</td></tr></table></td></tr></table>
+</body></html>
