@@ -1,7 +1,7 @@
 # penscan
 Python written Portscanner
 
-A Portscanner written in Python for Linux CLI with some cool featues.
+A Portscanner written in Python for Linux CLI with some cool features.
 
 ## Features
 - CLI Interface (Click)
